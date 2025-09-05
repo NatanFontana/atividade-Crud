@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+}
+
+div.text{
+    display: flex;
+    align-items: center;
+    margin: 30px 0px 30px 40px;
+
+    font-family: Arial;
+    font-size: 20px;
+
+    button {
+        margin-left: 20px;
+
+        border-radius: 5px;
+        height: 40px;
+        width: 160px;
+
+        font-size: 23px;
+    }
+}
+
+div.form-cadastro{
+    display: none;
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+
+
+    form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 400px;
+        height: 405px;
+
+        background-color: #fff;
+        border-radius: 10px;
+        border: solid 2px #000;
+        font-family: Arial;
+        padding: 5px;
+        gap: 20px;
+        
+        .title {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .text-input {
+            font-size: 20px;
+
+            input{
+                width: 390px;
+                border-radius: 5px;
+                height: 30px;
+                font-size: 20px;
+            }
+        }
+
+        .btn-confirmar-cancelar{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .btn-confirmar {
+                background-color: rgb(32, 162, 71);
+                border: none;
+                border-radius: 5px;
+                height: 45px;
+                font-size: 35px;
+                color: #fff;
+                padding: 4px 0px 4px 0px ;
+                transition: 0.5s;
+                width: 100%;
+            }
+            .btn-confirmar:hover {
+                background-color: rgb(24, 126, 55);
+            }
+
+            .btn-cancelar {
+                background-color: rgb(234, 0, 0);
+                border: none;
+                border-radius: 5px;
+                height: 45px;
+                font-size: 35px;
+                color: #fff;
+                padding: 4px 0px 4px 0px ;
+                transition: 0.5s;
+                width: 100%;
+            }
+            .btn-cancelar:hover {
+                background-color: rgb(150, 0, 0);
+            }
+        }
+        
+    }
+}
