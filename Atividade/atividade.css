@@ -21,7 +21,7 @@ div.text{
     }
 }
 
-div.form-cadastro{
+div.form{
     display: none;
 
     position: absolute;
@@ -67,10 +67,25 @@ div.form-cadastro{
             }
         }
 
+        .tabela-consulta {
+            width: 100%;
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                td, th {
+                    border: 1px solid black;
+                }
+            }
+        }
+
         .btn-confirmar-cancelar{
             display: flex;
             flex-direction: column;
             gap: 8px;
+            margin-top: auto;
+            margin-bottom: 3px;
 
             .btn-confirmar {
                 background-color: rgb(32, 162, 71);

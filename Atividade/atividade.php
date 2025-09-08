@@ -21,30 +21,30 @@
     </div>
 
     <!-- Formulário de Cadastro -->
-     <div id="form-cadastro" class="form-cadastro">
+     <div id="form-cadastro" class="form" action="salvar-cadastro.php" method="POST"> 
         <form>
             <label class="title">Cadastrar Série</label>
 
             <div class="text-input">
                 <label>Nome:</label>
                 <br>
-                <input id="nome-cadastro"></input>
+                <input id="nome-cadastro" name="nome"></input>
             </div>
 
             <div class="text-input">
                 <label>Gênero:</label>
                 <br>
-                <input id="genero-cadastro"></input>
+                <input id="genero-cadastro" name="genero"></input>
             </div>
 
             <div class="text-input">
                 <label>Data de Lançamento:</label>
                 <br>
-                <input id="data-cadastro"></input>
+                <input id="data-cadastro" type="date" name="data_lancamento"></input>
             </div>
 
             <div class="btn-confirmar-cancelar">
-                <button id="confirmar-cadastro" class="btn-confirmar" type="button">Confirmar</button>
+                <button id="confirmar-cadastro" class="btn-confirmar" type="submit">Confirmar</button>
                 <button id="cancelar-cadastro" class="btn-cancelar" type="button" onclick="cancelarCadastro()">Cancelar</button>
             </div>
             
@@ -56,7 +56,36 @@
     <!-- Consulta -->
     <div class="text">
         <div>Para consultar séries, utilize botão consultar:</div>
-        <button>Consultar</button>
+        <button id="cancelar-consulta" class="form-consulta" type="button" onclick="mostrarConsulta()">Consultar</button>
+    </div>
+
+    <div id="form-consulta" class="form">
+        <form>
+            <label class="title">Consultar Série</label>
+
+            <div class="text-input">
+                <label>Pesquisar nome<label>
+                <br>
+                <input id="pesquisar-nome"></input>
+            </div>
+
+            <div class="tabela-consulta">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Gênero</th>
+                            <th>Lançamento</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="btn-confirmar-cancelar">
+                <button id="cancelar-consulta" class="btn-cancelar" type="button" onclick="cancelarConsulta()">Cancelar</button>
+            </div>
+        </form>
     </div>
 
     <hr>
