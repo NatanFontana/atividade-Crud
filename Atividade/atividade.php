@@ -78,6 +78,7 @@
                 // Inclui a conexão com o banco de dados
                 require_once 'connection.php';
 
+                // Cria a tabela com base nas séries no banco de dados
                 try {
                     // Consulta para obter todos os registros da tabela CrudSerie
                     $sql = "SELECT id, nome, genero, data_lancamento FROM CrudSerie";
