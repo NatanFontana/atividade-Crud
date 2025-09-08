@@ -1,39 +1,31 @@
 <?php
-// Configurações do banco de dados
-$host = '143.106.241.4';
-$dbname = 'CrudSerie';
-$user = 'cl203219';
-$pass = 'cl*25052007';
+// Faz conexão com o banco de dados
+require_once 'connection.php';
 
-try {
-    // Conexão com o banco de dados
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Captura os dados do formulário
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = $_POST['nome'] ?? '';
     $genero = $_POST['genero'] ?? '';
-    $data_lancamento = $_POST['data_lancamento'] ?? '';
+    $data_lancamento = $_POST['data_lancamento'] ?? null;
 
-    // Validação simples
-    if (empty($nome) || empty($genero) || empty($data_lancamento)) {
-        die("Por favor, preencha todos os campos.");
-    }
+    if (!empty($nome) && !empty($genero) && $data_lancamento !== null) {
+            try {
+                $sql = "INSERT INTO CrudSerie (nome, genero, data_lancamento)
+                VALUES (:nome, :genero, :data_lancamento)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':nome', $nome);
+                $stmt->bindParam(':genero', $genero);
+                $stmt->bindParam(':data_lancamento', $data_lancamento);
+                $stmt->execute();
 
-    // Prepara a query de inserção
-    $stmt = $pdo->prepare("INSERT INTO series (nome, genero, data_lancamento) VALUES (:nome, :genero, :data_lancamento)");
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':genero', $genero);
-    $stmt->bindParam(':data_lancamento', $data_lancamento);
-
-    // Executa a query
-    if ($stmt->execute()) {
-        echo "Série cadastrada com sucesso!";
+                // Redireciona de volta para a pagina inicial
+                header("Location: atividade.php");
+                exit;
+            
+        } catch (PDOException $e) {
+            echo "<p>Erro ao cadastrar: " . $e->getMessage() . "</p>";
+        }
     } else {
-        echo "Erro ao cadastrar a série.";
+        echo "<p>Todas as informações são orbigatórias.</p>";
     }
-
-} catch (PDOException $e) {
-    echo "Erro na conexão: " . $e->getMessage();
 }
 ?>

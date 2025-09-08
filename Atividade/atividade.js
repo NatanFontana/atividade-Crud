@@ -13,3 +13,7 @@ function mostrarConsulta() {
 function cancelarConsulta() {
     document.getElementById("form-consulta").style.display = "none";
 }
+
+function pesquisarNome() {
+
+}
