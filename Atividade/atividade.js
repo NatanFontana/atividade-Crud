@@ -14,73 +14,48 @@ function cancelarConsulta() {
     document.getElementById("form-consulta").style.display = "none";
 }
 
-function armazenarTabela () {
+function armazenarTabela() {
     let tabela = document.getElementById("tabela-consulta");
     let linhas = tabela.getElementsByTagName("tr");
-    console.log(linhas.length);
-    let series = [];
+    let series = document.createElement("table");
+    series.className = "tabela-consulta";
 
-    for (i=1; i <linhas.length; i++) {
-        let colunas = linhas[i].getElementsByTagName("td");
+    // copiar cabeçalho
+    let cabecalho = linhas[0].cloneNode(true); // copia a linha inteira
+    series.appendChild(cabecalho);
 
-        // Cria o objeto serie para ser armazenado no array
-        let serie = {
-            nome: colunas[0].innerText,
-            genero: colunas[1].innerText,
-            data_lancamento: new Date(colunas[2].innerText),
-            id: parseInt(colunas[3].innerText),
-        };
-
-        series.push(serie);
-        console.log("serie=" + serie);
+    for (let i = 1; i < linhas.length; i++) {
+        let novaLinha = linhas[i].cloneNode(true); // clona toda a linha com as células
+        series.appendChild(novaLinha);
     }
-    
+
     return series;
 }
-
 
 const tabelaOriginal = armazenarTabela();
 console.log(tabelaOriginal);
 
 function pesquisarNome() {
-    let filtro = document.getElementById("pesquisar-nome").innerText;
-    let linhas = tabelaOriginal.length;
-    console.log(linhas);
+    let filtro = document.getElementById("pesquisar-nome").value;
+    let linhas = tabelaOriginal.getElementsByTagName("tr");
     let tabelaNova = document.createElement("table");
 
-    for(i=0; i <linhas; i++) {
-        console.log(tabelaOriginal);
-        // Verifica se o começo do nome é igual ao valor do filtro
-        tabelaOriginal.forEach(item =>{
-            if(item.nome.toLowerCase().startsWith(filtro.toLowerCase())){
-                // Cria o objeto serie para ser armazenado no array tabelaNova
-                /*let serie = {
-                    nome: item.nome,
-                    genero: item.nome,
-                    data_lancamento: new Date(item.data_lancamento),
-                    id: parseInt(item.id),
+    // copiar cabeçalho
+    let cabecalho = linhas[0].cloneNode(true);
+    tabelaNova.appendChild(cabecalho);
 
-                };*/
+    for (let i = 1; i < linhas.length; i++) {
+        let celulas = linhas[i].getElementsByTagName("td");
+        let nome = celulas[0].innerText.toLowerCase();
 
-                let linha = document.createElement("tr");
-
-                let colunaNome = document.createElement("td");
-                colunaNome.textContent = item.nome;
-
-                let colunaGenero = document.createElement("td");
-                colunaGenero.textContent = item.genero;
-
-                linha.appendChild(colunaNome);
-                linha.appendChild(colunaGenero);
-
-                
-                tabelaNova.appendChild(linha);
-            }
-        })
+        if (nome.startsWith(filtro.toLowerCase())) {
+            let novaLinha = linhas[i].cloneNode(true);// copia a linha inteira
+            tabelaNova.appendChild(novaLinha);
+        }
     }
 
-    console.log(tabelaNova);
-    tabelaNova.className = "tabela-consulta";
-
-    document.getElementById("tabela-consulta").replaceWith(tabelaNova);
+    let tabelaAntiga = document.getElementById("tabela-consulta"); // Recebe a tabela no HTML
+    tabelaAntiga.innerHTML = ""; // Limpa o conteúdo do HTML
+    tabelaAntiga.className = "tabela-consulta"; // Salva a classe da tabela
+    tabelaAntiga.appendChild(tabelaNova); // Salva a nova tabela filtrada
 }

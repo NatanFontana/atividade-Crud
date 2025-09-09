@@ -91,10 +91,10 @@
                         echo '<table>';
                         echo '<thead>';
                         echo '<tr>';
-                        echo '<th>Nome</th>';
-                        echo '<th>Gênero</th>';
-                        echo '<th>Lançamento</th>';
-                        echo '<th>ID</th>';
+                        echo '<th style="width: 40%">Nome</th>';
+                        echo '<th style="width: 35%">Gênero</th>';
+                        echo '<th style="width: 20%;">Lançamento</th>';
+                        echo '<th style="width: 5%;">ID</th>';
                         echo '</tr>';
                         echo '</thead>';
                         echo '<tbody>';
