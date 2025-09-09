@@ -14,6 +14,22 @@ function cancelarConsulta() {
     document.getElementById("form-consulta").style.display = "none";
 }
 
+function mostrarEditar() {
+    document.getElementById("form-editar").style.display = "block";
+}
+
+function cancelarEditar() {
+    document.getElementById("form-editar").style.display = "none";
+}
+
+function mostrarRemover() {
+    document.getElementById("form-remover").style.display = "block";
+}
+
+function cancelarRemover() {
+    document.getElementById("form-remover").style.display = "none";
+}
+
 function armazenarTabela() {
     let tabela = document.getElementById("tabela-consulta");
     let linhas = tabela.getElementsByTagName("tr");

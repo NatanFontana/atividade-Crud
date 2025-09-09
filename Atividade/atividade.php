@@ -61,7 +61,7 @@
     <!-- Consulta -->
     <div class="text">
         <div>Para consultar séries, utilize botão consultar:</div>
-        <button id="cancelar-consulta" class="form-consulta" type="button" onclick="mostrarConsulta()">Consultar</button>
+        <button onclick="mostrarConsulta()">Consultar</button>
     </div>
 
     <div id="form-consulta" class="form">
@@ -134,16 +134,78 @@
     <!-- Edição -->
     <div class="text">
         <div>Para editar suas séries, utilize o botão editar:</div>
-        <button>Editar</button>
+        <button onclick="mostrarEditar()">Editar</button>
     </div>
+
+    <!-- Formulário de Edição -->
+
+    <div id="form-editar" class="form"> 
+        <form action="editar-cadastro.php" method="POST" style="gap: 6px;">
+            <label class="title">Editar Série</label>
+
+            <div class="text-input">
+                <label>Nome:</label>
+                <br>
+                <input id="nome-editar" name="nome-editar"></input>
+            </div>
+
+            <div class="text-input">
+                <label>Gênero:</label>
+                <br>
+                <select id="genero-editar" name="genero-editar">
+                    <option value="acao">Ação</option>
+                    <option value="drama">Drama</option>
+                    <option value="comedia">Comédia</option>
+                    <option value="aventura">Aventura</option>
+                </select>
+            </div>
+
+            <div class="text-input">
+                <label>Data de Lançamento:</label>
+                <br>
+                <input id="data-editar" type="date" name="data_lancamento-editar"></input>
+            </div>
+
+            <div class="text-input">
+                <label>ID da Série (Não é alterado):</label>
+                <br>
+                <input id="id-editar" type="number" name="id-editar"></input>
+            </div>
+
+            <div class="btn-confirmar-cancelar">
+                <button id="confirmar-editar" class="btn-confirmar" type="submit">Confirmar</button>
+                <button id="cancelar-editar" class="btn-cancelar" type="button" onclick="cancelarEditar()">Cancelar</button>
+            </div>
+            
+        </form>
+     </div>
 
     <hr>
 
     <!-- Remoção -->
     <div class="text">
         <div>Para remover séries, utilize o botão remover:</div>
-        <button>Remover</button>
+        <button onclick="mostrarRemover()">Remover</button>
     </div>
+
+    <!-- Formulário de Remoção -->
+     <div id="form-remover" class="form"> 
+        <form action="remover-cadastro.php" method="POST" style="gap: 5px; height: 230px;">
+            <label class="title">Remover Série</label>
+
+            <div class="text-input">
+                <label>ID da Série:</label>
+                <br>
+                <input id="id-remover" type="number" name="id-editar"></input>
+            </div>
+
+            <div class="btn-confirmar-cancelar">
+                <button id="confirmar-remover" class="btn-confirmar" type="submit">Confirmar</button>
+                <button id="cancelar-remover" class="btn-cancelar" type="button" onclick="cancelarRemover()">Cancelar</button>
+            </div>
+            
+        </form>
+     </div>
 
     <hr>
 
