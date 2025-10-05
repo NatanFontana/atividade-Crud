@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS `CrudSeries2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `CrudSeries2`;
+
+CREATE TABLE `Series` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nome` VARCHAR(100) NOT NULL,
+  `sinopse` TEXT NULL,
+  `genero` VARCHAR(45) NOT NULL,
+  `data_lancamento` DATE NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
